@@ -1,0 +1,1 @@
+[{"name":"weather_forecast","description":"Read a synthetic weather forecast for the demo city.","inputSchema":{"type":"object","properties":{},"additionalProperties":false},"annotations":{"readOnlyHint":true}}]

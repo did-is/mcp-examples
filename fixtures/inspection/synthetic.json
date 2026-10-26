@@ -1,0 +1,48 @@
+{
+  "endpoint": "https://sample.invalid/mcp",
+  "status": "INSPECTED",
+  "mode": "SAMPLE",
+  "negotiatedVersion": "SAMPLE",
+  "supportedVersions": [],
+  "serverInfo": null,
+  "capabilities": {},
+  "tools": [
+    {
+      "name": "weather_forecast",
+      "description": "Read a synthetic weather forecast for the demo city.",
+      "definitionSha256": "5a063589ef6c73286bfd888a45feee193a24a3d68c707783bf1d5244794678db",
+      "schemaSha256": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "parameters": [],
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "declaredClass": "READ",
+      "heuristicClass": "READ",
+      "riskSignals": [],
+      "drift": "SAMPLE",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    }
+  ],
+  "inventoryHash": "2da6c93c9298a4ce62448e547b6a538c69333988b41a6414b76fbde2dbe8c9f0",
+  "jcsProfile": "rfc8785-binary64-v1",
+  "classCounts": {
+    "READ": 1
+  },
+  "drift": {
+    "status": "SAMPLE",
+    "added": [],
+    "removed": [],
+    "changed": []
+  },
+  "transcript": [],
+  "checks": [],
+  "headline": "Synthetic sample only",
+  "limitations": [
+    "Synthetic fixture: no server was contacted.",
+    "Definitions do not prove runtime behavior."
+  ]
+}

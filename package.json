@@ -1,0 +1,17 @@
+{
+  "name": "didis-mcp-examples",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {"node": ">=22.19.0"},
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "demo:drift": "tsx examples/02-block-definition-drift/main.ts",
+    "demo:inspect": "tsx examples/01-inspect-public-server/main.ts",
+    "demo:connect": "tsx examples/00-connect-didis/main.ts"
+  },
+  "dependencies": {"@didis/client": "0.2.5", "@modelcontextprotocol/sdk": "1.32.1"},
+  "devDependencies": {"@types/node": "22.19.0", "tsx": "4.20.6", "typescript": "5.9.3"}
+}

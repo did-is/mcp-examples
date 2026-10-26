@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Example dependencies and private local evidence
+node_modules/
+.local/
+.env.*
+output/
+baselines/
