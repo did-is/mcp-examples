@@ -27,7 +27,8 @@ export function executionBoundary(client: Pick<Client, 'listTools' | 'callTool'>
       tools.push(...result.tools);
       if (tools.length > 500) throw new Blocked('INCOMPLETE_INVENTORY');
       cursor = result.nextCursor;
-      if (!cursor) break;
+      if (cursor === undefined) break;
+      if (!cursor) throw new Blocked('INVALID_CURSOR');
       if (cursors.has(cursor)) throw new Blocked('REPEATED_CURSOR');
       cursors.add(cursor);
     }

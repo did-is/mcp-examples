@@ -7,7 +7,7 @@
   "engines": {"node": ">=22.19.0"},
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "node --import tsx --import ./tests/deny-network.ts --test tests/*.test.ts",
     "demo:drift": "tsx examples/02-block-definition-drift/main.ts",
     "demo:inspect": "tsx examples/01-inspect-public-server/main.ts",
     "demo:connect": "tsx examples/00-connect-didis/main.ts"

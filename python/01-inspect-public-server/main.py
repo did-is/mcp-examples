@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 
 
 def text(value):
-    return re.sub(r"[\x00-\x1f\x7f-\x9f]", "", str(value if value is not None else "not reported"))[:160]
+    return re.sub(r"[\x00-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]", "", str(value if value is not None else "not reported"))[:160]
 
 
 def fingerprint(value):
@@ -18,7 +18,7 @@ def endpoint(raw):
     try:
         url = urlsplit(raw)
         host = url.hostname or ""
-        valid = (url.scheme == "https" and not url.username and not url.password
+        valid = ("?" not in raw and "#" not in raw and url.scheme == "https" and not url.username and not url.password
                  and not url.query and not url.fragment and url.port in (None, 443)
                  and "." in host and not re.fullmatch(r"[\d.]+", host) and ":" not in host
                  and not re.search(r"\.(localhost|local|internal|test|invalid|example)$", host))
@@ -69,15 +69,21 @@ def main(args):
             result = json.loads((Path(__file__).resolve().parents[2] / "fixtures/inspection/synthetic.json").read_text())
         print("\n".join(projection(result, live)))
         return 0 if result["status"] == "INSPECTED" else 3
+    except json.JSONDecodeError:
+        print("PARSE_ERROR: no fixture fallback.", file=sys.stderr)
+        return 4
     except ValueError:
-        print("INPUT_OR_PARSE_ERROR: check the public HTTPS URL and response format.", file=sys.stderr)
+        print("INPUT: check the public HTTPS URL.", file=sys.stderr)
         return 64
     except Exception as error:
         status = getattr(error, "status", None)
         if status == 429:
             print("RATE_LIMITED: wait for Retry-After; retry manually later.", file=sys.stderr)
-        elif status in (400, 401, 403, 422):
-            print("AUTH_REQUIRED_OR_UNSUPPORTED: not evidence of malicious behavior.", file=sys.stderr)
+        elif status in (401, 403):
+            print("AUTH_REQUIRED: access restriction, not evidence of malicious behavior.", file=sys.stderr)
+            return 3
+        elif status in (400, 422):
+            print("UNSUPPORTED_OR_INVALID: check the endpoint and protocol support.", file=sys.stderr)
             return 3
         else:
             print("NETWORK_OR_PROTOCOL_ERROR: no fixture fallback. Check connectivity and compatibility.", file=sys.stderr)

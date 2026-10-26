@@ -1,11 +1,11 @@
 import { DidisError, type McpInspection } from '@didis/client';
 
 /** Never print raw remote descriptions, instructions, URLs, or error bodies. */
-export const text = (value: unknown): string => String(value ?? 'not reported').replace(/[\x00-\x1f\x7f-\x9f]/g, '').slice(0, 160);
+export const text = (value: unknown): string => String(value ?? 'not reported').replace(/[\x00-\x1f\x7f-\x9f\u202a-\u202e\u2066-\u2069]/g, '').slice(0, 160);
 export function publicEndpoint(raw: string): string {
   let url: URL;
   try { url = new URL(raw); } catch { throw new Error('INPUT: expected a public HTTPS endpoint'); }
-  if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash ||
+  if (raw.includes('?') || raw.includes('#') || url.protocol !== 'https:' || url.username || url.password || url.search || url.hash ||
       (url.port && url.port !== '443') || !url.hostname.includes('.') ||
       /^[\d.]+$/.test(url.hostname) || url.hostname.includes(':') ||
       /\.(localhost|local|internal|test|invalid|example)$/.test(url.hostname) || url.hostname === 'localhost') {

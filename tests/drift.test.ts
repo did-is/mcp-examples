@@ -32,13 +32,14 @@ test('strict SDK pin contract rejects duplicate reviewed names', async () => {
 
 test('list failure, repeated cursor, missing terminal page and >500 tools fail closed', async () => {
   const baseline = await approveReviewed(reviewed);
-  for (const kind of ['error', 'repeat', 'endless', 'oversized', 'malformed'] as const) {
+  for (const kind of ['error', 'repeat', 'endless', 'oversized', 'malformed', 'empty-cursor'] as const) {
     let executions = 0, pages = 0;
     const fake = {
       listTools: async () => {
         pages++;
         if (kind === 'error') throw new Error('Synthetic list failure');
         if (kind === 'malformed') return { tools: null };
+        if (kind === 'empty-cursor') return { tools: reviewed, nextCursor: '' };
         if (kind === 'oversized') return { tools: Array.from({ length: 501 }, (_, n) => ({ ...reviewed[0], name: `tool_${n}` })) };
         return { tools: reviewed, nextCursor: kind === 'repeat' ? 'same' : String(pages) };
       },

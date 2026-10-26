@@ -39,3 +39,16 @@ test('attestMcpPins.ok alone accepts extra tools: strict policy must check unpin
   assert.deepEqual(result.unpinned, ['extra']);
   assert.equal(result.ok && result.unpinned.length === 0, false);
 });
+test('live inspection network error is nonzero, never synthetic success', () => {
+  const command = spawnSync(process.execPath, ['--import', 'tsx', '--import', './tests/deny-network.ts', 'examples/01-inspect-public-server/main.ts', '--live'], { encoding: 'utf8' });
+  assert.equal(command.status, 4);
+  assert.match(command.stderr, /NETWORK_OR_PROTOCOL_ERROR/);
+  assert.doesNotMatch(command.stdout, /SYNTHETIC|INSPECTED/);
+});
+test('all default commands complete with sockets and fetch forbidden', () => {
+  for (const file of ['02-block-definition-drift', '01-inspect-public-server', '00-connect-didis']) {
+    const command = spawnSync(process.execPath, ['--import', 'tsx', '--import', './tests/deny-network.ts', `examples/${file}/main.ts`], { encoding: 'utf8' });
+    assert.equal(command.status, 0, command.stderr);
+    assert.match(command.stdout, /OFFLINE/);
+  }
+});
