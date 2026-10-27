@@ -1,0 +1,11 @@
+
+> didis-mcp-examples@0.0.0 demo:drift
+> tsx examples/02-block-definition-drift/main.ts
+
+OFFLINE | controlled MCP server | public DID.is SDK 0.2.5 | no authority service
+UNCHANGED           EXECUTED   handler calls for attempt: 1
+CHANGED DESCRIPTION BLOCKED    handler calls for attempt: 0
+MISSING PIN         BLOCKED    handler calls for attempt: 0
+ADDED TOOL          BLOCKED    handler calls for attempt: 0
+PASS | unchanged executes; denied attempts do not enter the handler.
+This checks definition equality, not behavior, identity, or delegation authority.

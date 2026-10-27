@@ -1,0 +1,8 @@
+{"version": 2, "width": 120, "height": 24, "timestamp": 1793096601, "title": "Actual offline MCP definition-change run", "command": "npm run demo:drift", "env": {"TERM": "dumb"}}
+[0.087843, "o", "\r\n> didis-mcp-examples@0.0.0 demo:drift\r\n> tsx examples/02-block-definition-drift/main.ts\r\n\r\n"]
+[0.526006, "o", "OFFLINE | controlled MCP server | public DID.is SDK 0.2.5 | no authority service\r\n"]
+[0.531119, "o", "UNCHANGED           EXECUTED   handler calls for attempt: 1\r\n"]
+[0.531723, "o", "CHANGED DESCRIPTION BLOCKED    handler calls for attempt: 0\r\n"]
+[0.53181, "o", "MISSING PIN         BLOCKED    handler calls for attempt: 0\r\n"]
+[0.532219, "o", "ADDED TOOL          BLOCKED    handler calls for attempt: 0\r\n"]
+[0.532277, "o", "PASS | unchanged executes; denied attempts do not enter the handler.\r\nThis checks definition equality, not behavior, identity, or delegation authority.\r\n"]

@@ -7,6 +7,8 @@ npm ci
 npm run demo:drift
 ```
 
+[See the actual recorded run and its execution boundary](../../docs/demo.md), including a plain-text transcript and optional terminal replay.
+
 ## Follow the code
 
 1. [`reviewed.json`](../../fixtures/tools/reviewed.json) is a committed, explicitly reviewed synthetic definition. It is not auto-approved from a remote first observation.

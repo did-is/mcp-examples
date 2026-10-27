@@ -26,6 +26,12 @@ ADDED TOOL          BLOCKED    handler calls for attempt: 0
 PASS | unchanged executes; denied attempts do not enter the handler.
 ```
 
+[![Actual offline demo output: unchanged executes once; definition-change attempts enter the handler zero times.](docs/demo/drift.png)](docs/demo.md)
+
+[**Follow the actual run and copy the boundary →**](docs/demo.md) · [Plain-text transcript](docs/demo/drift.txt) · [Terminal recording](docs/demo/drift.cast)
+
+The preview renders captured output; the recording preserves actual terminal timing. Neither is a live inspection or proof of delegation authority.
+
 The server and client communicate through the official SDK's in-memory transport. The only action is a synthetic weather handler incrementing a memory counter. No files, shell commands, emails, payments, or model calls are executed.
 
 ### Three examples. Three different jobs.

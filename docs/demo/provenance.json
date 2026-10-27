@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "34f9a04fd889bb99ec6bfd711287cae14a884276",
+  "recordedAt": "2026-10-27T10:23:21.098103+00:00",
+  "command": "npm run demo:drift",
+  "exitCode": 0,
+  "mode": "OFFLINE",
+  "network": "sockets and fetch forbidden via existing tests/deny-network.ts preload",
+  "node": "v24.18.1",
+  "npm": "11.16.0",
+  "platform": "Linux x86_64",
+  "durationSeconds": 0.532277,
+  "sdkVersion": "0.2.5",
+  "mcpSdkVersion": "1.32.1",
+  "recording": "asciicast v2, actual PTY output and elapsed event times, no edited output",
+  "preview": "Static PNG rendering of the captured output, not a screen recording",
+  "sha256": {
+    "drift.cast": "842163dbd8a8df7cd0ff1b2eec2b6064bb129774c29ad689444f266e897112fd",
+    "drift.txt": "538385898b53faa959f968097556bd493f113ebd4783f50f300f3487d864c5d6",
+    "drift.png": "9b0c4ea384b2a6fda7eac91b94454a1cc7d28900a5b1db3f9cc51f3c1ff830cb"
+  }
+}
